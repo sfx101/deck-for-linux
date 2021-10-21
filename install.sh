@@ -74,10 +74,7 @@ sudo loginctl enable-linger $(whoami)
 echo "**********************************************************************************";
 echo "Checking You need to specify either the socket path or the CLI context explicitly.";
 echo "**********************************************************************************";
-#export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-docker run -d -p 8080:80 nginx
 ##Check and install docker compose####
-#clear
 echo "**********************************************************************************";
 echo "##Check and install docker compose####";
 echo "**********************************************************************************";
@@ -85,7 +82,6 @@ pkgs='docker-compose neofetch'
 if ! dpkg -s $pkgs >/dev/null 2>&1; then
   sudo apt-get install -y $pkgs
 fi
-#clear
 
 ############## IF not started docker please run below command ################
 echo "**********************************************************************************";
@@ -106,7 +102,7 @@ systemctl start docker
 sudo chmod 666 /var/run/docker.sock
 
 ############### End of install#######################
-#clear
+clear
 neofetch
 echo "**********************************************************************************";
 echo "Thanking you select Deck + Docker Application";
