@@ -1,7 +1,6 @@
 #!/bin/sh
-sudo apt-get purge -y docker docker.io docker-ce docker-ce-cli
-sudo apt-get autoremove -y --purge docker docker.io docker-ce 
-sudo apt-get purge docker-ce docker-ce-cli containerd.io
+sudo apt-get purge -y docker docker.io docker-ce docker-ce-cli containerd.io docker-compose
+sudo apt-get autoremove -y --purge docker docker.io docker-ce
 sudo rm -rf /var/lib/docker /etc/docker
 sudo rm /etc/apparmor.d/docker
 sudo groupdel docker

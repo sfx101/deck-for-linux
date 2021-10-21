@@ -25,10 +25,9 @@ echo "**************************************************************************
 curl -fsSL https://get.docker.com/rootless | sh
 export PATH=/home/test/bin:$PATH
 export DOCKER_HOST=unix:///run/user/$USER/docker.sock
-sudo usermod -aG docker $USER
 systemctl --user enable docker && sudo loginctl enable-linger $(whoami)
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-#clear
+
 
 #Docker gpg add
 echo "**********************************************************************************";
@@ -56,31 +55,19 @@ pkgs='docker-ce docker-ce-cli containerd.io'
 if ! dpkg -s $pkgs >/dev/null 2>&1; then
   sudo apt-get install -y $pkgs
 fi
-#clear
+
 
 #List the versions available in your repo
 echo "**********************************************************************************";
 echo "List the versions available in your repo";
 echo "**********************************************************************************";
 apt-cache madison docker-ce
-# Checking docker install in root user
-echo "**********************************************************************************";
-echo "Checking docker Install in root user";
-echo "**********************************************************************************";
-sudo docker run hello-world
 # Group Add
 echo "**********************************************************************************";
 echo "Docker group Add"
 echo "**********************************************************************************";
 sudo usermod -aG docker $USER
-#clear
 
-#Repo Install
-#echo "**********************************************************************************";
-#echo "Repo Install";
-#echo "**********************************************************************************";
-#dockerd-rootless-setuptool.sh install
-#Service start with user mode
 echo "**********************************************************************************";
 echo "Service start with user mode";
 echo "**********************************************************************************";
@@ -109,11 +96,11 @@ echo "**************************************************************************
 echo "IF not started docker please run below command";
 echo "**********************************************************************************";
 echo "sudo usermod -aG docker $USER";
-sudo usermod -aG docker $USER
+#sudo usermod -aG docker $USER
 echo "systemctl --user start docker";
-systemctl --user start docker
+#systemctl --user start docker
 echo "systemctl --user enable docker";
-systemctl --user enable docker
+#systemctl --user enable docker
 echo "If https not working"
 sudo setcap 'cap_net_bind_service=+eip' /opt/DECK/deck-app
 sudo sh -c "echo '/opt/DECK/' >> /etc/ld.so.conf.d/deck.conf"
