@@ -13,10 +13,6 @@ if ! dpkg -s $pkgs >/dev/null 2>&1; then
   wget https://github.com/sfx101/deck/releases/download/v3.0.0/DECK-3.0.0-amd64.deb
   sudo dpkg -i DECK-3.0.0-amd64.deb
 fi
-#Check prsent user Info
-echo "check your user info";
-id -u && whoami && grep ^$(whoami): /etc/subuid && grep ^$(whoami): /etc/subgid
-#clear
 
 #If you installed Docker 20.10 or later without RPM/DEB packages, you should have
 echo "**********************************************************************************";
