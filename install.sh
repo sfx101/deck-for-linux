@@ -8,7 +8,7 @@ pkgs='curl uidmap apt-transport-https ca-certificates gnupg lsb-release'
 if ! dpkg -s $pkgs >/dev/null 2>&1; then
   sudo apt-get install -y $pkgs
 fi
-pkgs='deck-app'
+pkgs='deck'
 if ! dpkg -s $pkgs >/dev/null 2>&1; then
   wget https://github.com/sfx101/deck/releases/download/v3.0.0/DECK-3.0.0-amd64.deb
   sudo dpkg -i DECK-3.0.0-amd64.deb
@@ -94,7 +94,7 @@ echo "systemctl --user start docker";
 echo "systemctl --user enable docker";
 #systemctl --user enable docker
 echo "If https not working"
-sudo setcap 'cap_net_bind_service=+eip' /opt/DECK/deck-app
+sudo setcap 'cap_net_bind_service=+eip' /opt/DECK/deck
 sudo sh -c "echo '/opt/DECK/' >> /etc/ld.so.conf.d/deck.conf"
 sudo ldconfig
 echo "sudo chmod 664 /var/run/docker.sock";
