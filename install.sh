@@ -58,7 +58,5 @@ echo "sudo chmod 664 /var/run/docker.sock";
 systemctl start docker
 sudo chmod 666 /var/run/docker.sock
 
-
-clear
 neofetch
 echo "All set and done.";
